@@ -1,0 +1,28 @@
+# system_server.te
+
+allow system_server proc_last_kmsg:file r_file_perms;
+# /dev/mali0
+allow system_server gpu_device:chr_file rw_file_perms;
+
+# memtrack HAL
+allow system_server debugfs_mali:dir r_dir_perms;
+allow system_server debugfs_mali:file r_file_perms;
+allow system_server debugfs_ion:file r_file_perms;
+allow system_server debugfs_mali_mem:file r_file_perms;
+
+allow system_server frp_block_device:blk_file rw_file_perms;
+
+allow system_server sysfs_rtc:file r_file_perms;
+
+allow system_server sysfs_battery_writable:dir r_dir_perms;
+allow system_server sysfs_battery_writable:file rw_file_perms;
+
+# get_prop(system_server, vendor_radio_prop)
+
+r_dir_file(system_server, sysfs_virtual)
+
+get_prop(system_server, exported_camera_prop)
+get_prop(system_server, userspace_reboot_config_prop)
+get_prop(system_server, userspace_reboot_exported_prop)
+
+# allow system_server unlabeled:file { write setattr };

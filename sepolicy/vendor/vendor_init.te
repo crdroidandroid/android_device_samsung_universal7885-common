@@ -1,0 +1,24 @@
+typeattribute vendor_init data_between_core_and_vendor_violators;
+
+allow vendor_init proc_swapiness:file rw_file_perms; 
+allow vendor_init cgroup:file getattr;
+allow vendor_init tmpfs:dir { add_name write };
+allow vendor_init wifi_data_file:dir { getattr setattr };
+allow vendor_init wpa_socket:dir getattr;
+allow vendor_init wifi_data_file:dir search;
+# mkdir /data/hostapd
+allow vendor_init system_data_file:dir create_dir_perms;
+# mkdir /data/camera/*
+allow vendor_init camera_data_file:dir create_dir_perms;
+allow vendor_init cache_file:dir { remove_name write };
+allow vendor_init boot_logcat_file:file unlink;
+set_prop(vendor_init, persist_data_df_prop)
+set_prop(vendor_init, persist_data_wda_prop)
+set_prop(vendor_init, persist_rmnet_prop)
+get_prop(vendor_init, system_prop)
+get_prop(vendor_init, vendor_radio_prop)
+
+allow vendor_init thermal_link_device:dir r_dir_perms;
+allow vendor_init thermal_link_device:lnk_file r_file_perms;
+get_prop(vendor_init, vts_status_prop)
+
