@@ -1,5 +1,0 @@
-<resources>
-   <bool name="config_displayBlanksAfterDoze">true</bool>
-   <string name="config_mainBuiltInDisplayCutout">M 0,0 H -22.42857142857143 V 30.85714285714286 H 22.42857142857143 V 0 H 0 Z @dp</string>
-   <string translatable="false" name="config_mainBuiltInDisplayCutoutRectApproximation">@*android:string/config_mainBuiltInDisplayCutout</string>
-</resources>
